@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import butterknife.OnClick;
 import jfuentesa.cleanarchitecture.R;
-import jfuentesa.cleanarchitecture.ui.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -15,7 +14,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.main_btn_enter)
-    void navigateToList(){
+    public void navigateToList() {
         navigator.navigateToCharactersList(this);
     }
+
 }

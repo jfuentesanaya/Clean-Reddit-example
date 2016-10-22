@@ -1,4 +1,4 @@
-package jfuentesa.cleanarchitecture.ui.base;
+package jfuentesa.cleanarchitecture.ui.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -11,6 +11,8 @@ import butterknife.ButterKnife;
 import jfuentesa.cleanarchitecture.CleanArchitectureApplication;
 import jfuentesa.cleanarchitecture.di.components.ApplicationComponent;
 import jfuentesa.cleanarchitecture.navigator.Navigator;
+import jfuentesa.cleanarchitecture.ui.presenter.Presenter;
+import jfuentesa.cleanarchitecture.ui.view.ViewBase;
 
 /**
  * Created by jfuentesa on 21/10/2016.
@@ -21,10 +23,12 @@ public abstract class BaseActivity extends AppCompatActivity implements ViewBase
     @Inject
     protected Navigator navigator;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+
         getApplicationComponent().inject(this);
     }
 
@@ -37,5 +41,4 @@ public abstract class BaseActivity extends AppCompatActivity implements ViewBase
         fragmentTransaction.add(containerViewId,fragment);
         fragmentTransaction.commit();
     }
-
 }

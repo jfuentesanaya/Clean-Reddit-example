@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import jfuentesa.cleanarchitecture.di.modules.ApplicationModule;
-import jfuentesa.cleanarchitecture.ui.base.BaseActivity;
+import jfuentesa.cleanarchitecture.ui.activity.BaseActivity;
 
 /**
  * Created by jfuentesa on 21/10/2016.

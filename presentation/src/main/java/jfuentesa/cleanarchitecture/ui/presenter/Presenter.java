@@ -1,4 +1,4 @@
-package jfuentesa.cleanarchitecture.ui.base;
+package jfuentesa.cleanarchitecture.ui.presenter;
 
 /**
  * Created by jfuentesa on 21/10/2016.
