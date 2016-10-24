@@ -7,7 +7,7 @@ allprojects {
 ext {
     sthetoVersion           =   '1.3.1'
     sthetoRealmVersion      =   '0.9.0'
-    androidSupportVersion   =   '24.0.+'
+    androidSupportVersion   =   '25.0.0'
     butterknifeVersion      =   '8.2.1'
     retrofit2Version        =   '2.1.0'
     timberVersion           =   '4.3.0'
@@ -15,6 +15,7 @@ ext {
     javaxAnnotationVersion  =   '1.0'
     rxJavaVersion           =   '1.0.14'
     rxAndroidVersion        =   '1.0.1'
+    picassoVersion = '2.5.2'
 
     presentationDependencies = [
             appCompatV7     :   "com.android.support:appcompat-v7:$androidSupportVersion",
@@ -29,6 +30,7 @@ ext {
             dagger          :   "com.google.dagger:dagger:$daggerVersion",
             daggerApt       :   "com.google.dagger:dagger-compiler:$daggerVersion",
             javaxAnnotation :   "javax.annotation:jsr250-api:$javaxAnnotationVersion",
+            picasso         :   "com.squareup.picasso:picasso:$picassoVersion"
     ]
 
     dataDependencies = [

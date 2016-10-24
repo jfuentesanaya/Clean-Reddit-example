@@ -1,15 +1,17 @@
 package jfuentesa.cleanarchitecture.ui.presenter;
 
+import android.support.annotation.NonNull;
+
 import jfuentesa.cleanarchitecture.ui.view.ViewBase;
 
 /**
  * Created by jfuentesa on 21/10/2016.
  */
-public abstract class PresenterBaseImp<V extends ViewBase> implements Presenter  {
+abstract class PresenterBaseImp<V extends ViewBase> implements Presenter  {
 
     private V mvpViewBase;
 
-    public PresenterBaseImp(V mvpViewBase) {
+    PresenterBaseImp(@NonNull V mvpViewBase) {
         this.mvpViewBase = mvpViewBase;
     }
 

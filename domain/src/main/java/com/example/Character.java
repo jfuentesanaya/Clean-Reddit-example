@@ -1,7 +1,6 @@
-package com.example.data.entity;
+package com.example;
 
-
-public class CharacterEntity {
+public class Character {
 
     private int id;
     private String name;

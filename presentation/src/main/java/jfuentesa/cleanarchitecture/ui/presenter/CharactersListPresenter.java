@@ -1,7 +1,15 @@
 package jfuentesa.cleanarchitecture.ui.presenter;
 
+import com.example.Character;
+import com.example.data.CharacterDataRepository;
+import com.example.data.entity.mapper.CharactersEntityDataMapper;
+import com.example.data.executor.JobExecutor;
+import com.example.data.repository.character.CharacterDataStoreFactory;
+import com.example.exception.BundleError;
 import com.example.interactor.GetCharactersListUseCase;
 import com.example.interactor.GetCharactersListUseCaseImp;
+
+import java.util.Collection;
 
 import jfuentesa.cleanarchitecture.ui.view.CharactersListView;
 
@@ -9,14 +17,14 @@ import jfuentesa.cleanarchitecture.ui.view.CharactersListView;
  * Created by jfuentesa on 22/10/2016.
  */
 
-public class CharactersListPresenter extends PresenterBaseImp<CharactersListView> implements GetCharactersListUseCase.Callback{
+public class CharactersListPresenter extends PresenterBaseImp<CharactersListView> implements GetCharactersListUseCase.GetCharactersListUseCaseCallback{
 
     private final GetCharactersListUseCase getCharactersListUseCase;
 
-    public CharactersListPresenter(CharactersListView mvpViewBase) {
+    public CharactersListPresenter(CharactersListView mvpViewBase, CharacterDataStoreFactory characterDataStoreFactory) {
         super(mvpViewBase);
 
-        this.getCharactersListUseCase = new GetCharactersListUseCaseImp();
+        this.getCharactersListUseCase = new GetCharactersListUseCaseImp(CharacterDataRepository.getInstance(characterDataStoreFactory, new CharactersEntityDataMapper()), JobExecutor.getInstance());
     }
 
     public void initialize() {
@@ -61,12 +69,14 @@ public class CharactersListPresenter extends PresenterBaseImp<CharactersListView
     }
 
     @Override
-    public void onCompleteCharList() {
-
+    public void onCompleteCharList(Collection<Character> characterCollection) {
+        getView().renderCharacterList(characterCollection);
+        hideViewLoading();
     }
 
     @Override
-    public void onErrorCharList() {
-
+    public void onErrorCharList(BundleError bundleError) {
+        hideViewLoading();
+        getView().showError(bundleError.getErrorMessage());
     }
 }

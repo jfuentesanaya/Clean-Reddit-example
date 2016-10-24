@@ -1,7 +1,6 @@
 package jfuentesa.cleanarchitecture.ui.fragment;
 
 import android.app.Fragment;
-import android.support.annotation.StringRes;
 import android.widget.Toast;
 
 
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 public class BaseFragment extends Fragment {
 
-    protected void showToastMessage(@StringRes int message){
+    protected void showToastMessage(String message){
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

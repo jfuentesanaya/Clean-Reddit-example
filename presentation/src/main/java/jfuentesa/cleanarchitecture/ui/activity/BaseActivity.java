@@ -3,6 +3,7 @@ package jfuentesa.cleanarchitecture.ui.activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
@@ -27,9 +28,14 @@ public abstract class BaseActivity extends AppCompatActivity implements ViewBase
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
 
         getApplicationComponent().inject(this);
+    }
+
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        ButterKnife.bind(this);
     }
 
     public ApplicationComponent getApplicationComponent(){

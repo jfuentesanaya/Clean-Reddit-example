@@ -13,7 +13,7 @@ public interface LoadDataView extends ViewBase {
 
     void hideLoading();
 
-    void showError(@StringRes int message);
+    void showError(String message);
 
     Context getContext();
 }

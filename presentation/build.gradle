@@ -38,6 +38,7 @@ dependencies {
     compile presentationDependencies.dagger
     apt     presentationDependencies.daggerApt
     compile presentationDependencies.javaxAnnotation
+    compile presentationDependencies.picasso
 
     compile project(path: ':domain')
     compile project(path: ':data')
