@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="5">
+
+        <ImageView
+            android:id="@+id/fragm_char_detail_iv_photo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            app:srcCompat="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:text="@string/name"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:text="@string/age"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_haircolor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:text="@string/hair_color"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:text="@string/weight"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:text="@string/height"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_professions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:text="@string/professions"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/fragm_char_detail_txt_friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:text="@string/friends"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

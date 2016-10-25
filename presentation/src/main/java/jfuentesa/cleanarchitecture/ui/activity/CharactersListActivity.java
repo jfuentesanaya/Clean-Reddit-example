@@ -7,6 +7,8 @@ import android.os.Bundle;
 import com.example.Character;
 
 import jfuentesa.cleanarchitecture.R;
+import jfuentesa.cleanarchitecture.mapper.CharacterModelDataMapper;
+import jfuentesa.cleanarchitecture.model.CharacterModel;
 import jfuentesa.cleanarchitecture.ui.fragment.CharactersListFragment;
 
 public class CharactersListActivity extends BaseActivity implements CharactersListFragment.CharacterListListener {
@@ -25,6 +27,6 @@ public class CharactersListActivity extends BaseActivity implements CharactersLi
 
     @Override
     public void onCharacterClicked(Character character) {
-        navigator.navigateToDetailsCharacter(this);
+        navigator.navigateToDetailsCharacter(this, new CharacterModelDataMapper().transform(character));
     }
 }

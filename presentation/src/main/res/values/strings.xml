@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">CleanArchitecture</string>
     <string name="enter">Entrar</string>
+    <string name="name">Name</string>
     <string name="age">Age: %d</string>
+    <string name="weight">Weight: %f</string>
+    <string name="height">Height: %f</string>
+    <string name="hair_color">Hair color: %s</string>
+    <string name="professions">Professions: %s</string>
+    <string name="friends">Friends: %s</string>
+
 </resources>

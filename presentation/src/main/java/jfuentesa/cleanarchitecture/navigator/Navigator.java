@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import jfuentesa.cleanarchitecture.model.CharacterModel;
 import jfuentesa.cleanarchitecture.ui.activity.CharacterDetailsActivity;
 import jfuentesa.cleanarchitecture.ui.activity.CharactersListActivity;
 
@@ -24,9 +25,9 @@ public class Navigator {
         }
     }
 
-    public void navigateToDetailsCharacter(Context context){
+    public void navigateToDetailsCharacter(Context context, CharacterModel characterSelected){
         if(context != null){
-            context.startActivity(CharacterDetailsActivity.getCallingIntent(context));
+            context.startActivity(CharacterDetailsActivity.getCallingIntent(context, characterSelected));
         }
     }
 }
