@@ -1,6 +1,6 @@
 package com.example;
 
-public class Character {
+public class Character implements Comparable<Character>{
 
     private int id;
     private String name;
@@ -11,6 +11,10 @@ public class Character {
     private String hair_color;
     private String[] professions;
     private String[] friends;
+
+    private String TAG;
+    public final String TAG_ORDERBY_NAME = "NAME";
+    public final String TAG_ORDERBY_AGE = "AGE";
 
     public int getId() {
         return id;
@@ -82,5 +86,26 @@ public class Character {
 
     public void setFriends(String[] friends) {
         this.friends = friends;
+    }
+
+    public void compareByName(Character character){
+        compareTo(character);
+    }
+
+    @Override
+    public int compareTo(Character o) {
+        switch (TAG){
+            case TAG_ORDERBY_NAME:
+                return this.getName().compareTo(o.getName());
+            case TAG_ORDERBY_AGE:
+                return o.getAge() - this.getAge();
+            default:
+                return 0;
+        }
+    }
+
+    public void orderBy(Character character, String TAG){
+        this.TAG = TAG;
+        compareTo(character);
     }
 }

@@ -19,6 +19,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jfuentesa.cleanarchitecture.R;
+import jfuentesa.cleanarchitecture.comparator.OrderByAge;
+import jfuentesa.cleanarchitecture.comparator.OrderByName;
 
 /**
  * Created by jfuentesa on 24/10/2016.
@@ -69,6 +71,17 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
 
     public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
+    }
+
+    public void orderByName(){
+        Collections.sort(listCharacters, new OrderByName());
+
+        notifyDataSetChanged();
+    }
+
+    public void orderByAge(){
+        Collections.sort(listCharacters, new OrderByAge());
+        notifyDataSetChanged();
     }
 
     class CharacterViewHolder extends RecyclerView.ViewHolder{

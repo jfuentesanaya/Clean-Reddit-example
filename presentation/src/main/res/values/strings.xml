@@ -8,5 +8,9 @@
     <string name="hair_color">Hair color: %s</string>
     <string name="professions">Professions: %s</string>
     <string name="friends">Friends: %s</string>
+    <string name="order_by_name">Order by name</string>
+    <string name="order_by_age">Order by age</string>
+    <string name="network_error">Check your internet connection</string>
+    <string name="information">Information</string>
 
 </resources>

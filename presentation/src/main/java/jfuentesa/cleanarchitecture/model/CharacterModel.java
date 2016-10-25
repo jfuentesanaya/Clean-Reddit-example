@@ -15,7 +15,7 @@ public class CharacterModel extends Character implements Parcelable {
         setId(characterId);
     }
 
-    protected CharacterModel(Parcel in) {
+    private CharacterModel(Parcel in) {
         setId(in.readInt());
         setName(in.readString());
         setAge(in.readInt());

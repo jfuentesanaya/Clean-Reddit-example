@@ -5,10 +5,11 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -29,7 +30,7 @@ import jfuentesa.cleanarchitecture.ui.view.CharactersListView;
  * Created by jfuentesa on 21/10/2016.
  */
 
-public class CharactersListFragment extends BaseFragment implements CharactersListView{
+public class CharactersListFragment extends BaseFragment implements CharactersListView, SwipeRefreshLayout.OnRefreshListener{
 
     /**
      * Interface for listening user list events.
@@ -44,10 +45,18 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
     @BindView(R.id.fragm_char_list_progressBar)
     ProgressBar progressBar;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private CharactersListPresenter charactersListPresenter;
     private CharacterAdapter characterAdapter;
-
     private CharacterListListener characterListListener;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override public void onAttach(Context activity) {
         super.onAttach(activity);
@@ -90,6 +99,7 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
     @Override public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.charactersListPresenter.initialize();
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
 
@@ -105,7 +115,11 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
 
     @Override
     public void showError(String message) {
-        this.showToastMessage(message);
+        this.showDialogErrorMessage();
+        if(swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
+//        this.showToastMessage(message);
     }
 
     @Override
@@ -135,6 +149,7 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
     public void renderCharacterList(Collection<Character> characterCollection) {
         if(characterCollection != null){
             characterAdapter.setCharacterCollection(characterCollection);
+            swipeRefreshLayout.setRefreshing(false);
         }
     }
 
@@ -143,6 +158,27 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
         if (this.characterListListener != null) {
             this.characterListListener.onCharacterClicked(character);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_order_by_name) {
+            ((CharacterAdapter)rv_characters.getAdapter()).orderByName();
+            return true;
+        }else if(id == R.id.action_order_by_age){
+            ((CharacterAdapter)rv_characters.getAdapter()).orderByAge();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onRefresh() {
+        charactersListPresenter.initialize();
     }
 
     private final CharacterAdapter.OnItemClickListener onItemClickListener = new CharacterAdapter.OnItemClickListener() {
