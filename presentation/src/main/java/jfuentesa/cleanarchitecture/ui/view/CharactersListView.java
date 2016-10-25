@@ -11,4 +11,6 @@ import java.util.Collection;
 public interface CharactersListView extends LoadDataView {
     void renderCharacterList(Collection<Character> characterCollection);
 
+    void viewCharacterDetails(Character character);
+
 }

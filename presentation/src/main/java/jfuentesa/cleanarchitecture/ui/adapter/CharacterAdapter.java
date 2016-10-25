@@ -26,6 +26,12 @@ import jfuentesa.cleanarchitecture.R;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder> {
 
+
+    public interface OnItemClickListener{
+        void onCharacterItemClicked(Character character);
+    }
+
+    private OnItemClickListener onItemClickListener;
     private List<Character> listCharacters;
 
     public CharacterAdapter() {
@@ -61,6 +67,10 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         }
     }
 
+    public void setOnItemClickListener (OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
     class CharacterViewHolder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.item_list_txt_name)
@@ -69,13 +79,23 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         @BindView(R.id.item_list_img_photo)
         ImageView imgPhoto;
 
+        @BindView(R.id.item_list_txt_age) TextView txtAge;
 
-        private void bindCharacter(Context ctx, Character character){
+
+        private void bindCharacter(Context ctx, final Character character){
             txtName.setText(character.getName());
-
+            txtAge.setText(ctx.getString(R.string.age, character.getAge()));
 
             Picasso.with(ctx).load(character.getThumbnail()).into(imgPhoto);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onCharacterItemClicked(character);
+                    }
+                }
+            });
         }
 
         CharacterViewHolder(View itemView) {

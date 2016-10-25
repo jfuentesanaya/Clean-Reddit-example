@@ -30,13 +30,13 @@ public class CharactersEntityDataMapper {
         return characterList;
     }
 
-    public Character transform(CharacterEntity characterEntity){
+    private Character transform(CharacterEntity characterEntity){
         Character character = null;
         if(characterEntity!= null){
             character = new Character();
             character.setId(characterEntity.getId());
             character.setName(characterEntity.getName());
-            character.setThumbnail(character.getThumbnail());
+            character.setThumbnail(characterEntity.getThumbnail());
             character.setAge(characterEntity.getAge());
             character.setWeight(characterEntity.getWeight());
             character.setHeight(characterEntity.getHeight());

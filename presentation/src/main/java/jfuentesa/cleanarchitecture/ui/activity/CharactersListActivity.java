@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.Character;
+
 import jfuentesa.cleanarchitecture.R;
 import jfuentesa.cleanarchitecture.ui.fragment.CharactersListFragment;
 
-public class CharactersListActivity extends BaseActivity {
+public class CharactersListActivity extends BaseActivity implements CharactersListFragment.CharacterListListener {
 
     public static Intent getCallingIntent(Context context){
         return new Intent(context, CharactersListActivity.class);
@@ -21,4 +23,8 @@ public class CharactersListActivity extends BaseActivity {
         addFragment(R.id.char_list_layoutFragmentContainer, new CharactersListFragment());
     }
 
+    @Override
+    public void onCharacterClicked(Character character) {
+        navigator.navigateToDetailsCharacter(this);
+    }
 }

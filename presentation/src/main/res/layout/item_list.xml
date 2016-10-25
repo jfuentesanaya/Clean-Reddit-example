@@ -44,11 +44,11 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
-                android:id="@+id/tv_author_reddit"
+                android:id="@+id/item_list_txt_age"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
-                android:text="Age: " />
+                android:text="@string/age" />
 
         </LinearLayout>
     </LinearLayout>

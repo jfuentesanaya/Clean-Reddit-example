@@ -52,21 +52,21 @@ public class CharactersListPresenter extends PresenterBaseImp<CharactersListView
         this.getCharactersListUseCase.execute(this);
     }
 
-
-    @Override
-    public void resume() {
-
+    public void onCharacterClicked(Character character){
+        if(isViewAttached()) {
+            getView().viewCharacterDetails(character);
+        }
     }
 
-    @Override
-    public void pause() {
-
-    }
 
     @Override
-    public void destroy() {
+    public void resume() { }
 
-    }
+    @Override
+    public void pause() { }
+
+    @Override
+    public void destroy() { }
 
     @Override
     public void onCompleteCharList(Collection<Character> characterCollection) {

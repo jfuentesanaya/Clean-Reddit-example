@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import jfuentesa.cleanarchitecture.ui.activity.CharacterDetailsActivity;
 import jfuentesa.cleanarchitecture.ui.activity.CharactersListActivity;
 
 /**
@@ -20,6 +21,12 @@ public class Navigator {
     public void navigateToCharactersList(Context context){
         if(context != null){
             context.startActivity(CharactersListActivity.getCallingIntent(context));
+        }
+    }
+
+    public void navigateToDetailsCharacter(Context context){
+        if(context != null){
+            context.startActivity(CharacterDetailsActivity.getCallingIntent(context));
         }
     }
 }

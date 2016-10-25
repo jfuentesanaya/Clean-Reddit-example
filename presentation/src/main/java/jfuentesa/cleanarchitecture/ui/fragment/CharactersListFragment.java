@@ -1,6 +1,8 @@
 package jfuentesa.cleanarchitecture.ui.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -29,6 +31,13 @@ import jfuentesa.cleanarchitecture.ui.view.CharactersListView;
 
 public class CharactersListFragment extends BaseFragment implements CharactersListView{
 
+    /**
+     * Interface for listening user list events.
+     */
+    public interface CharacterListListener {
+        void onCharacterClicked(final Character character);
+    }
+
     @BindView(R.id.fragm_char_list_rv_CharactersList)
     RecyclerView rv_characters;
 
@@ -37,6 +46,27 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
 
     private CharactersListPresenter charactersListPresenter;
     private CharacterAdapter characterAdapter;
+
+    private CharacterListListener characterListListener;
+
+    @Override public void onAttach(Context activity) {
+        super.onAttach(activity);
+        if (activity instanceof CharacterListListener) {
+            this.characterListListener = (CharacterListListener) activity;
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            if (activity instanceof CharacterListListener) {
+                this.characterListListener = (CharacterListListener) activity;
+            }
+        }
+    }
 
     @Nullable
     @Override
@@ -52,6 +82,7 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
 
     private void setupRecyclerView() {
         characterAdapter = new CharacterAdapter();
+        characterAdapter.setOnItemClickListener(onItemClickListener);
         rv_characters.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         rv_characters.setAdapter(characterAdapter);
     }
@@ -106,4 +137,20 @@ public class CharactersListFragment extends BaseFragment implements CharactersLi
             characterAdapter.setCharacterCollection(characterCollection);
         }
     }
+
+    @Override
+    public void viewCharacterDetails(Character character) {
+        if (this.characterListListener != null) {
+            this.characterListListener.onCharacterClicked(character);
+        }
+    }
+
+    private final CharacterAdapter.OnItemClickListener onItemClickListener = new CharacterAdapter.OnItemClickListener() {
+        @Override
+        public void onCharacterItemClicked(Character character) {
+            if (charactersListPresenter != null && character != null) {
+                charactersListPresenter.onCharacterClicked(character);
+            }
+        }
+    };
 }
