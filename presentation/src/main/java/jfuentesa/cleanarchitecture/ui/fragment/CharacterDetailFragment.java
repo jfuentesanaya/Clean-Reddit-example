@@ -53,13 +53,13 @@ public class CharacterDetailFragment extends BaseFragment implements CharactersD
     }
 
     public static CharacterDetailFragment newInstance(CharacterModel characterSelected) {
-        CharacterDetailFragment userDetailsFragment = new CharacterDetailFragment();
+        CharacterDetailFragment characterDetailsFragment = new CharacterDetailFragment();
 
         Bundle argumentsBundle = new Bundle();
         argumentsBundle.putParcelable(CHARACTER_SELECTED, characterSelected);
-        userDetailsFragment.setArguments(argumentsBundle);
+        characterDetailsFragment.setArguments(argumentsBundle);
 
-        return userDetailsFragment;
+        return characterDetailsFragment;
     }
 
     @Override

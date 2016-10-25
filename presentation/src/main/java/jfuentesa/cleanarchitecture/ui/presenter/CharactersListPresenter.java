@@ -28,12 +28,12 @@ public class CharactersListPresenter extends PresenterBaseImp<CharactersListView
     }
 
     public void initialize() {
-        this.loadUserList();
+        this.loadCharacterList();
     }
 
-    private void loadUserList() {
+    private void loadCharacterList() {
         this.showViewLoading();
-        this.getUserList();
+        this.getCharacterList();
     }
 
     private void showViewLoading() {
@@ -48,7 +48,7 @@ public class CharactersListPresenter extends PresenterBaseImp<CharactersListView
         }
     }
 
-    private void getUserList() {
+    private void getCharacterList() {
         this.getCharactersListUseCase.execute(this);
     }
 
