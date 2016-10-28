@@ -2,15 +2,32 @@
     <string name="app_name">CleanArchitecture</string>
     <string name="enter">Entrar</string>
     <string name="name">Name</string>
-    <string name="age">Age: %d</string>
-    <string name="weight">Weight: %f</string>
-    <string name="height">Height: %f</string>
-    <string name="hair_color">Hair color: %s</string>
-    <string name="professions">Professions: %s</string>
-    <string name="friends">Friends: %s</string>
-    <string name="order_by_name">Order by name</string>
-    <string name="order_by_age">Order by age</string>
+    <string name="author">Author: %s</string>
+    <string name="score">Score: %s</string>
+    <string name="comments">Comments: %s</string>
+    <string name="date">Date: %s</string>
+    <string name="order_by_title">Order by author</string>
+    <string name="order_by_date">Order by date</string>
     <string name="network_error">Check your internet connection</string>
     <string name="information">Information</string>
+
+    <string name="default_title">title</string>
+    <string name="default_author">author</string>
+    <string name="default_score">score</string>
+    <string name="default_comments">comments</string>
+    <string name="default_date">date</string>
+    <string name="seconds">hace %d segundos</string>
+    <plurals name="minutes">
+        <item quantity="one">hace %d minuto</item>
+        <item quantity="other">hace %d minutos</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">hace %d hora</item>
+        <item quantity="other">hace %d horas</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">hace %d día</item>
+        <item quantity="other">hace %d dias</item>
+    </plurals>
 
 </resources>

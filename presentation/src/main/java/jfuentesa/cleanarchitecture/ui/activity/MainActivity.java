@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.main_btn_enter)
     public void navigateToList() {
-        navigator.navigateToCharactersList(this);
+        navigator.navigateToList(this);
     }
 
 }

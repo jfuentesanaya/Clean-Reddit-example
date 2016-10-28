@@ -5,9 +5,9 @@ import android.content.Context;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import jfuentesa.cleanarchitecture.model.CharacterModel;
-import jfuentesa.cleanarchitecture.ui.activity.CharacterDetailsActivity;
-import jfuentesa.cleanarchitecture.ui.activity.CharactersListActivity;
+import jfuentesa.cleanarchitecture.model.PostModel;
+import jfuentesa.cleanarchitecture.ui.activity.PostDetailsActivity;
+import jfuentesa.cleanarchitecture.ui.activity.PostListActivity;
 
 /**
  * Created by jfuentesa on 21/10/2016.
@@ -19,15 +19,15 @@ public class Navigator {
     @Inject
     Navigator () {}
 
-    public void navigateToCharactersList(Context context){
+    public void navigateToList(Context context){
         if(context != null){
-            context.startActivity(CharactersListActivity.getCallingIntent(context));
+            context.startActivity(PostListActivity.getCallingIntent(context));
         }
     }
 
-    public void navigateToDetailsCharacter(Context context, CharacterModel characterSelected){
+    public void navigateToPostDetails(Context context, PostModel postSelected){
         if(context != null){
-            context.startActivity(CharacterDetailsActivity.getCallingIntent(context, characterSelected));
+            context.startActivity(PostDetailsActivity.getCallingIntent(context, postSelected));
         }
     }
 }

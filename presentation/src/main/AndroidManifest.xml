@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.CharactersListActivity"
+        <activity android:name=".ui.activity.PostListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.CharacterDetailsActivity"
+        <activity android:name=".ui.activity.PostDetailsActivity"
             android:screenOrientation="portrait"/>
     </application>
 

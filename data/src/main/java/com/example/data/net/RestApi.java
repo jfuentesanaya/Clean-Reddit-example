@@ -2,15 +2,9 @@ package com.example.data.net;
 
 import android.content.Context;
 
-import com.example.data.entity.CharacterEntity;
+import com.example.data.entity.ListEntity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
-import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -25,10 +19,10 @@ import retrofit2.http.GET;
 
 public interface RestApi {
 
-    String BASE_URL = "https://raw.githubusercontent.com/AXA-GROUP-SOLUTIONS/mobilefactory-test/master/";
+    String BASE_URL = "https://api.reddit.com/r/programming/";
 
     class Creator {
-        public static RestApi restCharactersApiImpl(Context context) {
+        public static RestApi restApiImpl(Context context) {
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .connectTimeout(15, TimeUnit.SECONDS)
@@ -49,6 +43,6 @@ public interface RestApi {
         }
     }
 
-    @GET("data.json")
-    Call<JsonObject> getCountryList();
+    @GET("new.json")
+    Call<ListEntity> getPostList();
 }

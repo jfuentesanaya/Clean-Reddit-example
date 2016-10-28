@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="jfuentesa.kk.KK">
     <item
-        android:id="@+id/action_order_by_name"
+        android:id="@+id/action_order_by_title"
         android:orderInCategory="100"
-        android:title="@string/order_by_name"
+        android:title="@string/order_by_title"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_order_by_age"
+        android:id="@+id/action_order_by_date"
         android:orderInCategory="100"
-        android:title="@string/order_by_age"
+        android:title="@string/order_by_date"
         app:showAsAction="never" />
 </menu>
