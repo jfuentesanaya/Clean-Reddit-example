@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import jfuentesa.cleanarchitecture.R;
 import jfuentesa.cleanarchitecture.model.PostModel;
 import jfuentesa.cleanarchitecture.ui.view.PostsDetailView;
+import jfuentesa.cleanarchitecture.utils.DateParse;
 
 /**
  * Created by jfuentesa on 25/10/2016.
@@ -80,7 +81,7 @@ public class PostDetailFragment extends BaseFragment implements PostsDetailView 
         txtAuthor.setText(getString(R.string.author, postSelected.getAuthor()));
         txtScore.setText(getString(R.string.score, String.valueOf(postSelected.getScore())));
         txtComments.setText(getString(R.string.comments, String.valueOf(postSelected.getNum_comments())));
-        txtDate.setText(getString(R.string.date, String.valueOf(postSelected.getDate())));
+        txtDate.setText(getString(R.string.date, DateParse.createDate(getActivity(), postSelected.getDate())));
 
         if(!postSelected.getThumbnail().isEmpty()) {
             Picasso.with(getActivity()).load(postSelected.getThumbnail()).into(imgPhoto);

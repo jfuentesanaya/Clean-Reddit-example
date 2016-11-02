@@ -6,8 +6,9 @@
     <string name="score">Score: %s</string>
     <string name="comments">Comments: %s</string>
     <string name="date">Date: %s</string>
-    <string name="order_by_title">Order by author</string>
+    <string name="order_by_title">Order by title</string>
     <string name="order_by_date">Order by date</string>
+    <string name="order_by_author">Order by author</string>
     <string name="network_error">Check your internet connection</string>
     <string name="information">Information</string>
 
@@ -16,18 +17,18 @@
     <string name="default_score">score</string>
     <string name="default_comments">comments</string>
     <string name="default_date">date</string>
-    <string name="seconds">hace %d segundos</string>
+    <string name="seconds">%d seconds ago</string>
     <plurals name="minutes">
-        <item quantity="one">hace %d minuto</item>
-        <item quantity="other">hace %d minutos</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">hace %d hora</item>
-        <item quantity="other">hace %d horas</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">hace %d día</item>
-        <item quantity="other">hace %d dias</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
 
 </resources>

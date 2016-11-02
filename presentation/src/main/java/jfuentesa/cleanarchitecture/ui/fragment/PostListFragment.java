@@ -172,6 +172,9 @@ public class PostListFragment extends BaseFragment implements PostsListView, Swi
         }else if(id == R.id.action_order_by_date){
             ((PostAdapter) rv_posts.getAdapter()).orderByDate();
             return true;
+        }else if(id == R.id.action_order_by_author){
+            ((PostAdapter) rv_posts.getAdapter()).orderByAuthor();
+            return true;
         }
         return false;
     }

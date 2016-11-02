@@ -19,8 +19,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jfuentesa.cleanarchitecture.R;
+import jfuentesa.cleanarchitecture.comparator.OrderByAuthor;
 import jfuentesa.cleanarchitecture.comparator.OrderByDate;
 import jfuentesa.cleanarchitecture.comparator.OrderByTitle;
+import jfuentesa.cleanarchitecture.utils.DateParse;
 
 /**
  * Created by jfuentesa on 24/10/2016.
@@ -84,6 +86,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         notifyDataSetChanged();
     }
 
+    public void orderByAuthor(){
+        Collections.sort(listPosts, new OrderByAuthor());
+        notifyDataSetChanged();
+    }
+
+
     class PostViewHolder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.item_txt_title)TextView txtTitle;
@@ -98,7 +106,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             txtAuthor.setText(ctx.getString(R.string.author, post.getAuthor()));
             txtComments.setText(ctx.getString(R.string.comments, String.valueOf(post.getNum_comments())));
             txtScore.setText(ctx.getString(R.string.score, String.valueOf(post.getScore())));
-            txtDate.setText(ctx.getString(R.string.date, String.valueOf(post.getDate())));
+
+
+            String date_ago = DateParse.createDate(ctx, post.getDate());
+            txtDate.setText(ctx.getString(R.string.date, date_ago));
 
             if(!post.getThumbnail().isEmpty()) {
                 Picasso.with(ctx).load(post.getThumbnail()).into(imgPhoto);
