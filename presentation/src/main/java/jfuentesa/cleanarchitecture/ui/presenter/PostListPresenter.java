@@ -12,6 +12,7 @@ import com.example.interactor.GetPostsListUseCaseImp;
 import java.util.Collection;
 
 import jfuentesa.cleanarchitecture.ui.view.PostsListView;
+import timber.log.Timber;
 
 /**
  * Created by jfuentesa on 22/10/2016.
@@ -76,6 +77,7 @@ public class PostListPresenter extends PresenterBaseImp<PostsListView> implement
 
     @Override
     public void onErrorPostList(BundleError bundleError) {
+        Timber.e(bundleError.getErrorMessage());
         hideViewLoading();
         getView().showError(bundleError.getErrorMessage());
     }

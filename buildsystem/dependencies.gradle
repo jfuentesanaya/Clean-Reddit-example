@@ -15,7 +15,7 @@ ext {
     javaxAnnotationVersion  =   '1.0'
     rxJavaVersion           =   '1.0.14'
     rxAndroidVersion        =   '1.0.1'
-    picassoVersion = '2.5.2'
+    picassoVersion          =   '2.5.2'
 
     presentationDependencies = [
             appCompatV7     :   "com.android.support:appcompat-v7:$androidSupportVersion",
