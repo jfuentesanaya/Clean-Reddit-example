@@ -6,13 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 
-import javax.inject.Inject;
-
 import butterknife.ButterKnife;
-import jfuentesa.cleanarchitecture.CleanArchitectureApplication;
-import jfuentesa.cleanarchitecture.di.components.ApplicationComponent;
 import jfuentesa.cleanarchitecture.navigator.Navigator;
-import jfuentesa.cleanarchitecture.ui.presenter.Presenter;
 import jfuentesa.cleanarchitecture.ui.view.ViewBase;
 
 /**
@@ -21,7 +16,6 @@ import jfuentesa.cleanarchitecture.ui.view.ViewBase;
 
 public abstract class BaseActivity extends AppCompatActivity implements ViewBase {
 
-    @Inject
     protected Navigator navigator;
 
 
@@ -29,18 +23,20 @@ public abstract class BaseActivity extends AppCompatActivity implements ViewBase
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getApplicationComponent().inject(this);
+//        getApplicationComponent().inject(this);
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
+
+        navigator = Navigator.getInstance();
     }
 
-    public ApplicationComponent getApplicationComponent(){
-        return ((CleanArchitectureApplication)getApplication()).getApplicationComponent();
-    }
+//    public ApplicationComponent getApplicationComponent(){
+//        return ((CleanArchitectureApplication)getApplication()).getApplicationComponent();
+//    }
 
     protected void addFragment(int containerViewId, Fragment fragment){
         FragmentTransaction fragmentTransaction = this.getFragmentManager().beginTransaction();

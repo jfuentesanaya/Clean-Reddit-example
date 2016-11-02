@@ -35,9 +35,6 @@ dependencies {
     compile presentationDependencies.stheto
     compile presentationDependencies.sthetoHttp
     compile presentationDependencies.timber
-    compile presentationDependencies.dagger
-    apt     presentationDependencies.daggerApt
-    compile presentationDependencies.javaxAnnotation
     compile presentationDependencies.picasso
 
     compile project(path: ':domain')

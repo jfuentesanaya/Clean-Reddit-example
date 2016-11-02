@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            app:srcCompat="@mipmap/ic_launcher"/>
+            app:srcCompat="@drawable/logo_deffault"/>
 
         <TextView
             android:id="@+id/fragm_post_detail_txt_title"

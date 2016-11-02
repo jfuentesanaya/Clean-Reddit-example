@@ -2,9 +2,8 @@ package jfuentesa.cleanarchitecture;
 
 import android.app.Application;
 
-import jfuentesa.cleanarchitecture.di.components.ApplicationComponent;
-import jfuentesa.cleanarchitecture.di.components.DaggerApplicationComponent;
-import jfuentesa.cleanarchitecture.di.modules.ApplicationModule;
+import com.facebook.stetho.Stetho;
+
 import timber.log.Timber;
 
 /**
@@ -13,25 +12,25 @@ import timber.log.Timber;
 
 public class CleanArchitectureApplication extends Application {
 
-    private ApplicationComponent applicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        this.applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this)).build();
-
         initializeTimber();
-    }
-
-    public ApplicationComponent getApplicationComponent() {
-        return applicationComponent;
+        initializeStetho();
     }
 
     private void initializeTimber() {
         if(BuildConfig.DEBUG){
             Timber.plant(new Timber.DebugTree());
         }
+    }
+
+    private void initializeStetho(){
+        Stetho.initialize(Stetho.newInitializerBuilder(this)
+                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                .build());
     }
 }
